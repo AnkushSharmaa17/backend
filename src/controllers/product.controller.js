@@ -18,6 +18,17 @@ export async function createProduct(req, res) {
     });
   }
 }
+export const getProductBySlug = async (req, res) => {
+  try {
+    const product = await Product.findOne({ slug: req.params.slug });
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    res.json({ product });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 export async function getAllProducts(req, res) {
   try {

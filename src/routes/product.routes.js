@@ -6,13 +6,14 @@ import {
   getSingleProduct,
   updateProduct,
   deleteProduct,
+  getProductBySlug, 
 } from "../controllers/product.controller.js";
 
 const router = express.Router();
-
 router.post("/", createProduct);
 
 router.get("/", getAllProducts);
+router.get("/slug/:slug", getProductBySlug);
 
 router.get("/:id", getSingleProduct);
 

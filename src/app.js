@@ -8,6 +8,7 @@ import userRouter from "./routes/user.routes.js";
 import otpRouter from "./routes/otp.routes.js";  
 import orderRouter from "./routes/order.route.js";
 import paymentRouter from "./routes/payment.routes.js";
+import paymentRoutes from './routes/payment.routes.js';
 // ─── ES module workaround for __dirname ───
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,6 +43,7 @@ app.use("/api/otp", otpRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/payement",paymentRouter);
 app.use("/api", paymentRouter);
+app.use('/api/payments', paymentRoutes);
 // ─── Health check ───
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "OK", message: "Server is running" });
